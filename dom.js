@@ -6,14 +6,19 @@ function init() {
         walk();
     });
 
-    let adelement = document.getElementById('AdwalkBtn');
-    adelement.addEventListener('click', function () {
+    element = document.getElementById('AdwalkBtn');
+    element.addEventListener('click', function () {
         advanvceWalk();
     });
 
     element = document.getElementById('modifyBtn');
     element.addEventListener('click', function () {
         modify();
+    });
+
+    element = document.getElementById('AdmodifyBtn');
+    element.addEventListener('click', function () {
+        adModify();
     });
 
     element = document.getElementById('addBtn');
@@ -112,6 +117,16 @@ function modify() {
     el.dataset.cool = 'true';       // data-cool="true"
     el.dataset.coolFactor = '9000'; //data-cool-factor="9000"
 
+}
+
+function adModify(){
+    let h1 = document.querySelector("h1");
+    h1.textContent = "DOM Manipulation is Fun!";
+
+    let num = Math.floor(Math.random()*6)+1;
+    h1.style = `color: var(--darkcolor${num})`;
+    let p1 = document.querySelector("#p1");
+    p1.classList.toggle("shmancy");
 }
 
 function add() {

@@ -59,6 +59,20 @@
             75% {background: #ffd97d;}
             100% {background: #ff9b85;}
         }
+        @keyframes shmancyp1 {
+            0% {background: #e6b40f;}
+            25% {background: #4c8966;}
+            50% {background: #3db7dc;}
+            75% {background: #29198d;}
+            100% {background: #9d5d4e;}
+        }
+
+        .shmancy{
+            animation-name: shmancyp1;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
     </style>
 </head>
 <body>
@@ -90,7 +104,7 @@
         <legend>Modify</legend>
         <label for="modifyBtn">Simple Modification</label>
         <input type="button" id="modifyBtn" value="Modify">
-
+        <input type="button" id="AdmodifyBtn" value="AdModify">
         <!--
             Q2) Add a new button "Advanced Modify" that does the following:
             1.  Changes the text of the h1 to say "DOM Manipulation is Fun!"
