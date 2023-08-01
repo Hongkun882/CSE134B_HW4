@@ -6,6 +6,11 @@ function init() {
         walk();
     });
 
+    let adelement = document.getElementById('AdwalkBtn');
+    adelement.addEventListener('click', function () {
+        advanvceWalk();
+    });
+
     element = document.getElementById('modifyBtn');
     element.addEventListener('click', function () {
         modify();
@@ -51,7 +56,39 @@ function showNode(el) {
     let nodeName = el.nodeName;
     let nodeValue = el.nodeValue;
 
-    alert(`Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}`);
+    let text = document.querySelector("textarea");
+    text.value += `Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}\n\n`;
+    
+}
+
+function advanvceWalk(){
+    
+    let element = document.querySelector("html");
+    let text = document.querySelector("textarea");
+    treeTreversal(element,0,text)
+}
+
+function treeTreversal(element, level, text){
+    
+    console.log(`Node type: ${element.nodeType}\nNode name: ${element.nodeName}\nNode value: ${element.nodeValue}`)
+    if (element.nodeType == '8' || (element.nodeValue != null && element.nodeValue.trim() == "")){
+        return;
+    }
+    // determind the level
+    for (let i = 1; i <= level; i++){
+        text.value += "    ";
+    }
+    
+    text.value += `${element.nodeName}\n`
+    
+    if (!element.firstChild){
+        return;
+    }
+    
+    for (let child of element.childNodes){
+        treeTreversal(child,level+1,text);
+    }
+
 }
 
 function modify() {
