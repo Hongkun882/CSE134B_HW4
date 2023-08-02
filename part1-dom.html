@@ -79,7 +79,6 @@
 <!-- start of HTML demo -->
 <h1>Vanilla DOM Manipulation</h1>
 <p id="p1">This is a <em>test</em> of the DOM</p>
-
 <section id="controls">
 <h2>Demos</h2>
 <form>
@@ -87,7 +86,7 @@
         <legend>Traversal</legend>
         <label for="walkBtn">Basic Traversal</label>
         <input type="button" id="walkBtn" value="Walk">
-        <input type="button" id="AdwalkBtn" value="AdvancedWalk">
+        <input type="button" id="AdwalkBtn" value="Advanced Walk">
         <br>
         <textarea name="text_walk" id="text_walk" cols="50" rows="20"></textarea>
         <!--
@@ -104,7 +103,7 @@
         <legend>Modify</legend>
         <label for="modifyBtn">Simple Modification</label>
         <input type="button" id="modifyBtn" value="Modify">
-        <input type="button" id="AdmodifyBtn" value="AdModify">
+        <input type="button" id="AdmodifyBtn" value="Adavanced Modify">
         <!--
             Q2) Add a new button "Advanced Modify" that does the following:
             1.  Changes the text of the h1 to say "DOM Manipulation is Fun!"
@@ -116,18 +115,38 @@
     <fieldset>
         <legend>Add</legend>
         <label for="addBtn">Basic Addition</label>
+        
+        <select name="select1" id="select1">
+            <option value="text_node">Text Node</option>
+            <option value="comment">Comment</option>
+            <option value="element">Element</option>
+        </select>
+        <br>
+        <textarea name="" id="add_text" cols="30" rows="10"></textarea>
+
+        <br>
         <input type="button" id="addBtn" value="Add">
+        <input type="button" id="AdaddBtn" value="Advanced Add">
 
         <!--
             Q3) Add a select menu that allows you to add a new element to the DOM.  The select menu should have the following options: Text Node, Comment, and Element. When you select one of these options and click the button, the appropriate element should be added to the DOM.  You may want to define an output tag to put the newly created elements in it and style it in a fashion with a border or background color, so you can tell it is new content.  You will need a corresponding text field to define the contents of the text node, comment text, or tag name you want to insert.  By default set the text of any added element to say "New Element" or "New Comment" or "New Text Node" depending on the type of element you are adding but add in the current date and time using a JS Date object.  You can use the toLocaleString() method to get a nicely formatted date and time string.
 
         -->
+        <br>
+        <output></output>
+
+        
     </fieldset>
 
     <fieldset>
         <legend>Remove</legend>
         <label for="removeBtn">Simple Delete</label>
         <input type="button" id="removeBtn" value="Remove">
+        <input type="button" id="safe_removeBtn" value="Safe Remove">
+        <br>
+        <textarea name="" id="selector_text" cols="30" rows="10"></textarea>
+        <br>
+        <input type="button" id="selector_removeBtn" value="Selector Remove">
         <!--
 
           Q4a) Safe Delete

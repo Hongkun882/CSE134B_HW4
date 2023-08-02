@@ -26,10 +26,25 @@ function init() {
         add();
     });
 
+    element = document.getElementById('AdaddBtn');
+    element.addEventListener('click', function () {
+        adAdd();
+    });
+
     element = document.getElementById('removeBtn');
     element.addEventListener('click', function () {
         remove();
     });
+
+    element = document.getElementById('safe_removeBtn');
+    element.addEventListener('click', function () {
+        safe_remove();
+    });
+    element = document.getElementById('selector_removeBtn');
+    element.addEventListener('click', function () {
+        selector_remove();
+    });
+    
 }
 
 function walk() {
@@ -61,7 +76,7 @@ function showNode(el) {
     let nodeName = el.nodeName;
     let nodeValue = el.nodeValue;
 
-    let text = document.querySelector("textarea");
+    let text = document.querySelector("#text_walk");
     text.value += `Node type: ${nodeType}\nNode name: ${nodeName}\nNode value: ${nodeValue}\n\n`;
     
 }
@@ -69,7 +84,7 @@ function showNode(el) {
 function advanvceWalk(){
     
     let element = document.querySelector("html");
-    let text = document.querySelector("textarea");
+    let text = document.querySelector("#text_walk");
     treeTreversal(element,0,text)
 }
 
@@ -153,10 +168,77 @@ function add() {
     // let oldP = document.getElementById('p1');
     // oldP.insertAdjacentHTML('afterend', '<p>This is a<em>test</em> of the DOM</p>');
     // clearly short hands are pretty easy!
+
+    
 }
+
+function adAdd(){
+    let output = document.querySelector("output");
+    let textarea = document.querySelector("#add_text");
+    let select = document.querySelector("#select1");
+    const date = new Date();
+    let date_string = date.toLocaleString();
+
+    console.log(select)
+    if (select.value == "text_node"){
+        
+        let text_node;
+        if (textarea.value == ""){
+            text_node = document.createTextNode(`New Text Node ${date_string}`)
+        }
+        else{
+            text_node = document.createTextNode(`${textarea.value} ${date_string}`);
+        }
+        
+        output.appendChild(text_node);
+        output.appendChild(document.createElement("br"))
+    }
+    else if (select.value == "comment"){
+        let comment_node;
+        if (textarea.value == ""){
+            comment_node = document.createComment(`New Comment ${date_string}`)
+        }
+        else{
+            comment_node = document.createComment(`${textarea.value} ${date_string}`);
+        }
+        output.appendChild(comment_node);
+        
+    }
+    else{
+        let element = document.createElement(textarea.value);
+        
+        element.textContent = `New element  ${date_string}`
+        output.appendChild(element);
+        output.appendChild(document.createElement("br"))
+    }
+}
+
 
 function remove() {
   document.body.removeChild(document.body.lastChild);
 }
+
+function safe_remove(){
+    let section = document.querySelector("#controls");
+    let body = document.querySelector("body");
+    
+    
+    for (let i = body.childNodes.length-1 ; i >=0; i--){
+        if (body.childNodes[i] != section){
+            body.removeChild(body.childNodes[i])
+        }
+        
+    }
+}
+
+function selector_remove(){
+    let css_query = document.querySelector("#selector_text").value;
+    let elements = document.querySelectorAll(css_query)
+    for (let el of elements){
+        el.remove()
+    }
+}
+
+
 
 window.addEventListener('DOMContentLoaded', init);
