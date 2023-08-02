@@ -44,6 +44,16 @@ function init() {
     element.addEventListener('click', function () {
         selector_remove();
     });
+
+    element = document.getElementById('cloneBtn');
+    element.addEventListener('click', function () {
+        clone()
+    });
+
+    element = document.getElementById('AdcloneBtn');
+    element.addEventListener('click', function () {
+        Adclone()
+    });
     
 }
 
@@ -238,7 +248,30 @@ function selector_remove(){
         el.remove()
     }
 }
+function clone(){
+    
+    let p1 = document.querySelector("#p1");
+    let p1_prime = p1.cloneNode(true);
+    let output = document.querySelector("output");
+    output.appendChild(p1_prime)
+}
 
+function Adclone(){
+
+    let template = document.querySelector("template");
+    let output = document.querySelector("output");
+    let card = template.content.querySelector(".card")
+    
+    let clone_card = card.cloneNode(true);
+
+    let title = clone_card.querySelector("h3");
+    let img = clone_card.querySelector("img");
+    img.setAttribute("src", `lake${Math.floor(Math.random()*2)+1}.jpg`);
+    title.textContent += ` ${Math.floor(Math.random()*100)+1}`
+
+    output.appendChild(clone_card)
+
+}
 
 
 window.addEventListener('DOMContentLoaded', init);
